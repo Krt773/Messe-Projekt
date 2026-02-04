@@ -355,66 +355,67 @@ function choose_with_feedback(btnIds, clickedIdx, info, who){
 /* ========== SI GAME ========= */
 /* =========================== */
 
-const si_pool=[
-  {q:"Der PC geht an, aber der Bildschirm bleibt komplett schwarz.",answers:[
-    {text:"Stromkabel, Monitoranschluss und Power‑Button zuerst prüfen.",type:'correct'},
-    {text:"Sofort neuen PC bestellen.",type:'wrong'},
-    {text:"Bis morgen warten – vielleicht geht’s dann.",type:'funny'}],
-    info:"🧠 Erst einfache Hardware prüfen."},
-
-  {q:"„Das WLAN ist sehr langsam. Webseiten laden kaum.“",answers:[
-    {text:"Router‑Standort und Störungen prüfen.",type:'correct'},
-    {text:"Ignorieren – wird schon besser.",type:'wrong'},
-    {text:"Fenster öffnen – frische Luft.",type:'funny'}],
-    info:"📶 Entfernung & Störungen prüfen."},
-
-  {q:"Druckauftrag gesendet – aber kein Ausdruck.",answers:[
-    {text:"Papier/Toner/Kabel + Warteschlange prüfen.",type:'correct'},
-    {text:"20× auf „Drucken“ klicken.",type:'wrong'},
-    {text:"Drucker nett anlächeln.",type:'funny'}],
-    info:"🖨️ Häufig Warteschlange oder Papier."},
-
-  {q:"Login schlägt fehl. Fehlermeldung erscheint.",answers:[
-    {text:"Passwort & Accountstatus prüfen.",type:'correct'},
-    {text:"Passwort überall ‚1234‘ setzen.",type:'wrong'},
-    {text:"Vielleicht Montag.",type:'funny'}],
-    info:"🔐 Fehlermeldung lesen hilft."},
-
-  {q:"Programm öffnet sich gar nicht.",answers:[
-    {text:"Fehlermeldung/Updates prüfen.",type:'correct'},
-    {text:"System komplett neu installieren.",type:'wrong'},
-    {text:"PC mit Snacks motivieren.",type:'funny'}],
-    info:"⚙️ Neustart & Update zuerst."},
-
-  {q:"„Ich kann keine E‑Mails senden oder empfangen.“",answers:[
-    {text:"Internet + Speicherplatz prüfen.",type:'correct'},
-    {text:"Einfach alles löschen.",type:'wrong'},
-    {text:"Mehr Drucker kaufen.",type:'funny'}],
-    info:"📧 Oft Speicher voll / offline."},
-
-  {q:"Maus oder Tastatur reagieren nicht.",answers:[
-    {text:"Batterie/Kabel prüfen.",type:'correct'},
-    {text:"Einfach pusten.",type:'wrong'},
-    {text:"Mit Käse locken.",type:'funny'}],
-    info:"🖱️ Peripherie: Kabel/Port."},
-
-  {q:"Monitor flackert.",answers:[
-    {text:"Kabel/Monitor testen.",type:'correct'},
-    {text:"Helligkeit max.",type:'wrong'},
-    {text:"Zuzwinkern.",type:'funny'}],
-    info:"🖥️ Meist Kabel locker."},
-
-  {q:"„Ich komme nicht ins Internet.“",answers:[
-    {text:"LAN/WLAN prüfen + Router testen.",type:'correct'},
-    {text:"Neuen Router kaufen.",type:'wrong'},
-    {text:"Magnet ans Internet halten.",type:'funny'}],
-    info:"🌐 Lokale Verbindung prüfen."},
-
-  {q:"Kein Ton bei Videos/Musik.",answers:[
-    {text:"Ausgabegerät & Kabel prüfen.",type:'correct'},
-    {text:"Kopfhörer zerstören.",type:'wrong'},
-    {text:"Laptop anschmunzeln.",type:'funny'}],
-    info:"🔊 Häufig falsches Gerät ausgewählt."},
+const si_pool = [
+  { q:"Der PC geht an, aber der Bildschirm bleibt komplett schwarz.",
+    answers:[
+      {text:"Stromkabel, Monitoranschluss und Power‑Button zuerst prüfen.", type:'correct'},
+      {text:"Sofort einen neuen PC bestellen.", type:'wrong'},
+      {text:"Bis morgen warten – vielleicht geht es dann.", type:'funny'}],
+    info:"🧠 Erst die einfachen Hardware‑Sachen prüfen: Strom, Kabel, Monitor." },
+  { q:"Der Mitarbeiter sagt: „Das WLAN ist so langsam, Webseiten laden kaum.“",
+    answers:[
+      {text:"Router‑Standort und Störungen prüfen, Verbindung testen.", type:'correct'},
+      {text:"Einfach ignorieren – wird schon schneller.", type:'wrong'},
+      {text:"Fenster öffnen – frische Luft für WLAN.", type:'funny'}],
+    info:"📶 Häufige Ursachen: Entfernung, Wände, andere Geräte. Erst testen." },
+  { q:"Der Druckauftrag wird gesendet, aber es kommt kein Ausdruck.",
+    answers:[
+      {text:"Papier/Toner/Kabel und die Drucker‑Warteschlange prüfen.", type:'correct'},
+      {text:"20× auf „Drucken“ klicken.", type:'wrong'},
+      {text:"Den Drucker nett anlächeln.", type:'funny'}],
+    info:"🖨️ Standard‑Check: Status, Toner, Papier, Queue." },
+  { q:"Der Benutzer kann sich nicht einloggen. Eine Fehlermeldung erscheint.",
+    answers:[
+      {text:"Fehlermeldung lesen und Passwort/Accountstatus prüfen.", type:'correct'},
+      {text:"Für alle das Passwort auf „1234“ setzen.", type:'wrong'},
+      {text:"Vielleicht hat die Tastatur Montag.", type:'funny'}],
+    info:"🔐 Erst verstehen, warum der Login scheitert (Fehlermeldung lesen)." },
+  { q:"Ein Programm öffnet sich nicht – beim Start passiert gar nichts.",
+    answers:[
+      {text:"Fehlermeldung prüfen, Updates suchen, Neustart testen.", type:'correct'},
+      {text:"Gleich das ganze Betriebssystem neu installieren.", type:'wrong'},
+      {text:"Den PC mit Snacks motivieren.", type:'funny'}],
+    info:"⚙️ Erst einfache Software‑Checks (Updates, Neustart)." },
+  { q:"Eine Kollegin sagt: „Ich kann keine E‑Mails mehr senden oder empfangen.“",
+    answers:[
+      {text:"Internet, Speicherplatz und Postfachgröße prüfen.", type:'correct'},
+      {text:"Alle Mails löschen – ohne zu prüfen.", type:'wrong'},
+      {text:"Mehr Drucker kaufen – für E‑Mails.", type:'funny'}],
+    info:"📧 Meist sind Verbindung oder Speicher voll – zuerst prüfen." },
+  { q:"Maus oder Tastatur reagieren plötzlich nicht mehr.",
+    answers:[
+      {text:"Batterie/Kabel prüfen, anderen USB‑Port testen.", type:'correct'},
+      {text:"Einmal kräftig pusten – das hilft sicher.", type:'wrong'},
+      {text:"Die Maus mit Käse locken.", type:'funny'}],
+    info:"🖱️ Peripherie: Strom/Kabel/Port zuerst prüfen." },
+  { q:"Der Monitor flackert oder wird kurz schwarz.",
+    answers:[
+      {text:"Kabel prüfen, anderen Monitor testen, Grafik‑Einstellungen checken.", type:'correct'},
+      {text:"Helligkeit maximal – hilft bestimmt.", type:'wrong'},
+      {text:"Dem Monitor zuzwinkern.", type:'funny'}],
+    info:"🖥️ Ursache oft Kabel/Hardware – logisch eingrenzen." },
+  { q:"Der Mitarbeiter sagt: „Ich komme nicht ins Internet. Webseiten laden nicht.“",
+    answers:[
+      {text:"LAN/WLAN prüfen, Router testen, IP‑Einstellungen ansehen.", type:'correct'},
+      {text:"Sofort neuen Router kaufen.", type:'wrong'},
+      {text:"Internet mit Magneten anziehen.", type:'funny'}],
+    info:"🌐 Erst lokal prüfen, dann das Netzwerk." },
+  { q:"Es ist kein Ton zu hören – egal ob Video oder Musik.",
+    answers:[
+      {text:"Lautstärke, Ausgabegerät, Kabel/Bluetooth prüfen.", type:'correct'},
+      {text:"Kopfhörer zerschneiden – sicher ist sicher.", type:'wrong'},
+      {text:"Den Laptop anschmunzeln.", type:'funny'}],
+    info:"🔊 Häufig ist das falsche Ausgabegerät gewählt." }
 ];
 
 let si_questions=[], si_state={i:0,points:0,started:false,total:6};
@@ -528,7 +529,7 @@ const ae_pool = [
     info:"🗣️ Gute Meldungen helfen Nutzern." },
   { q:"Ein neues Software‑Projekt startet.",
     answers:[
-      {text:"Ziele & Anforderungen kurz dokumentieren.", type:'correct'},
+      {text:"Ziele &amp; Anforderungen kurz dokumentieren.", type:'correct'},
       {text:"Einfach irgendwas bauen.", type:'wrong'},
       {text:"Nur die Farben festlegen.", type:'funny'}],
     info:"🎯 Erst verstehen, dann bauen." },
@@ -636,7 +637,7 @@ const dm_pool = [
       {text:"Scan + automatische Erkennung + Freigabeprozess.", type:'correct'},
       {text:"Alle schneller tippen lassen.", type:'wrong'},
       {text:"In Schönschrift abschreiben.", type:'funny'}],
-    info:"🧾 Digitale Workflows sparen Zeit & Fehler." },
+    info:"🧾 Digitale Workflows sparen Zeit &amp; Fehler." },
   { q:"Termine werden mit Post‑its und Papierlisten geplant.",
     answers:[
       {text:"Gemeinsamen Online‑Kalender einführen.", type:'correct'},
